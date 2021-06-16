@@ -1,51 +1,24 @@
-# DB 設計
+# README
 
-# users table
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-| Column             | Type                | Options                 |
-|--------------------|---------------------|-------------------------|
-| email              | string              | null: false             |
-| password           | string              | null: false             |
-| nickname           | string              | null: false             |
+Things you may want to cover:
 
-## Association
- * has_many :items
- * has_one  :address
- * has_many :purchase
+* Ruby version
 
- ## items table
+* System dependencies
 
-| Column            | Type               | Options                   |
-|--------------------|---------------------|-------------------------|
-| produsname         | string              | null: false             |
-| price              | string              | null: false             |
-| text               | string              | null: false             |
-| user               |references           | foreign_key: true       |
-|image               |references           | foreign_key: true       |
+* Configuration
 
-## Association
+* Database creation
 
-- belongs_to :user
-- has_one    :address
-- has_one    :purchase
+* Database initialization
 
-## address table
+* How to run the test suite
 
-| Column            | Type               | Options                   |
-|--------------------|---------------------|-------------------------|
-| postcode           | string              | null: false             |
-|prefecture_id       | string              | null: false             |
-| block              | string              | null: false             |
-| city               | string              | null: false             |
+* Services (job queues, cache servers, search engines, etc.)
 
-## Association
+* Deployment instructions
 
-- belongs_to :user
-- belongs_to :items
-- has_one    :purchase
-
-# purchase table
-
-| Column            | Type               | Options                   |
-|--------------------|---------------------|-------------------------|
-| user_id            |references           | foreign_key: true       |
+* ...
