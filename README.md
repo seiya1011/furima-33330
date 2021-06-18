@@ -4,7 +4,7 @@
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
-| email              | string              | unique: true            |
+| email              | string              | null: false             |
 | encrypted_password | string              | null: false             |
 | nickname           | string              | null: false             |
 | last_name          | string              | null: false             |
@@ -22,15 +22,13 @@
 | Column            | Type               | Options                   |
 |--------------------|---------------------|-------------------------|
 | produsname         | string              | null: false             |
-| price              | string              | null: false             |
-| text               | string              | null: false             |
+| price              | integer             | null: false             |
+| text               | text                | null: false             |
 | user               |references           | foreign_key: true       |
-|image               |references           | foreign_key: true       |
 
 ## Association
 
 - belongs_to :user
-- has_one    :address
 - belongs_to    :purchase
 
 ## address table
@@ -38,9 +36,11 @@
 | Column            | Type               | Options                   |
 |--------------------|---------------------|-------------------------|
 | postcode           | string              | null: false             |
-|prefecture_id       | string              | null: false             |
+| prefecture_id      | integer             | null: false             |
 | block              | string              | null: false             |
 | city               | string              | null: false             |
+| building           | string              | null: false             |
+| phone_number       | string              | null: false             |
 
 ## Association
 
