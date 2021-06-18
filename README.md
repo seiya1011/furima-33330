@@ -4,14 +4,18 @@
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
-| email              | string              | null: false             |
-| password           | string              | null: false             |
+| email              | string              | unique: true            |
+| encrypted_password | string              | null: false             |
 | nickname           | string              | null: false             |
+| last_name          | string              | null: false             |
+| first_name         | string              | null: false             |
+| last_name_kana     | string              | null: false             |
+| first_name_kana    | string              | null: false             |
+| birthday           | date                | null: false             |
 
 ## Association
  * has_many :items
- * has_one  :address
- * has_many :purchase
+ * has_many :purchases
 
  ## items table
 
@@ -27,7 +31,7 @@
 
 - belongs_to :user
 - has_one    :address
-- has_one    :purchase
+- belongs_to    :purchase
 
 ## address table
 
@@ -44,8 +48,14 @@
 - belongs_to :items
 - has_one    :purchase
 
-# purchase table
+# purchases table
 
 | Column            | Type               | Options                   |
 |--------------------|---------------------|-------------------------|
-| user_id            |references           | foreign_key: true       |
+| user               |references           | foreign_key: true       |
+| item               |references           | foreign_key: true       |
+
+## Association
+- belongs_to :user
+- belongs_to :items
+- belongs_to :address
