@@ -36,7 +36,7 @@
 belongs_to :user
 has_one    :purchase
 
-## addreses table
+## addresses table
 
 | Column            | Type               | Options                   |
 |--------------------|---------------------|-------------------------|
@@ -63,4 +63,4 @@ has_one    :purchase
 ## Association
 - belongs_to :user
 - belongs_to :item
-- has_one    :address
+- has_one    :address
