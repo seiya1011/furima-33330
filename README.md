@@ -15,13 +15,13 @@
 
 ## Association
  * has_many :items
- * has_many :purchases
+ * has_many :purchase
 
  ## items table
 
 | Column            | Type               | Options                   |
 |--------------------|---------------------|-------------------------|
-| produsname         | string              | null: false             |
+| product_name       | string              | null: false             |
 | price              | integer             | null: false             |
 | info               | text                | null: false             |
 | user               |references           | foreign_key: true       |
@@ -36,7 +36,7 @@
 belongs_to :user
 has_one    :purchase
 
-## address table
+## addreses table
 
 | Column            | Type               | Options                   |
 |--------------------|---------------------|-------------------------|
@@ -46,6 +46,7 @@ has_one    :purchase
 | city               | string              | null: false             |
 | building           | string              |                         |
 | phone_number       | string              | null: false             |
+| purchase           |references           | foreign_key: true       |
 
 ## Association
 
@@ -61,5 +62,5 @@ has_one    :purchase
 
 ## Association
 - belongs_to :user
-- belongs_to :items
-- has_one    :address
+- belongs_to :item
+- has_one    :address
