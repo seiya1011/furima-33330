@@ -15,7 +15,7 @@
 
 ## Association
  * has_many :items
- * has_many :purchase
+ * has_many :purchases
 
  ## items table
 
@@ -26,7 +26,7 @@
 | info               | text                | null: false             |
 | user               |references           | foreign_key: true       |
 | category_id        | integer             | null: false             |
-| shipping_area_id   | integer             | null: false             |
+| prefecture_id      | integer             | null: false             |
 | day_to_ship_id     | integer             | null: false             |
 |product_condition_id| integer             | null: false             |
 | shipping_charge_id | integer             | null: false             |
