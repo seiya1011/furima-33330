@@ -9,6 +9,11 @@ RSpec.describe User, type: :model do
     it 'nicknameとemail、passwordとpassword_confirmationとfirst_nameとfamily_nameとfirst_name_kanaとfamily_name_kanaと_birthdayが存在すれば登録できる' do
       expect(@user).to be_valid
     end
+    it 'passwordは確認用を含めて2回入力することであれば登録できること' do
+      @user.password = 's23456'
+      @user.password_confirmation = 's23456'
+      expect(@user).to be_valid
+    end
   end
   context 'ユーザー登録ができない時' do
     it 'nicknameが空では登録できない' do
@@ -102,11 +107,6 @@ RSpec.describe User, type: :model do
       @user.password = '123456'
       @user.valid?
       expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password", "Password 半角英数字を使用してください"
-    end
-    it 'passwordは確認用を含めて2回入力することであれば登録できること' do
-      @user.password = 's23456'
-      @user.password_confirmation = 's23456'
-      expect(@user).to be_valid
     end
     it 'passwordとpassword_confirmationが不一致では登録できないこと' do
       @user.password = 's23456'
