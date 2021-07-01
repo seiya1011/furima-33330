@@ -24,7 +24,7 @@
 | product_name       | string              | null: false             |
 | price              | integer             | null: false             |
 | info               | text                | null: false             |
-| user               |references           | foreign_key: true       |
+| user               | references          | foreign_key: true       |
 | category_id        | integer             | null: false             |
 | prefecture_id      | integer             | null: false             |
 | day_to_ship_id     | integer             | null: false             |
