@@ -12,5 +12,9 @@ class User < ApplicationRecord
           validates :first_name_kana
           validates :family_name_kana
         end
+        with_options presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: '半角英数字を使用してください' } do
+          validates :password
+          validates :password_confirmation
+        end
          validates :nickname,:birthday,:family_name,:family_name,:first_name_kana,:family_name_kana, presence: true
 end
