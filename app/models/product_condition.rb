@@ -9,4 +9,7 @@ class ProductCondition < ActiveHash::Base
     { id: 7, name: '全体的に状態が悪い' },
     { id: 8, name: 'その他' }
   ]
+
+  include ActiveHash::Associations
+  has_many :item
   end
