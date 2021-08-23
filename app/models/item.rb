@@ -6,8 +6,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_charge
   belongs_to :product_condition
   has_one_attached :image
-
-
+  validates :image,:product_name,:info, presence: true
 
   validates :category_id, numericality: { other_than: 1 } 
   validates :day_to_ship_id, numericality: { other_than: 1 } 
