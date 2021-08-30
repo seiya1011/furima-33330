@@ -8,6 +8,8 @@ class Item < ApplicationRecord
   has_one_attached :image
   validates :image,:product_name,:info, presence: true
 
+  validates :price, inclusion: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/} 
+
   validates :category_id, numericality: { other_than: 1 } 
   validates :day_to_ship_id, numericality: { other_than: 1 } 
   validates :prefecture_id, numericality: { other_than: 1 } 
