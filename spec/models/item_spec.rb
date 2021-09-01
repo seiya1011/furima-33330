@@ -41,6 +41,11 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include "Price can't be blank"
     end
+    it 'userが空だと出品できない' do
+      @item.user = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include "User can't be blank"
+    end
     it 'infoが空だと出品できない' do
       @item.info = ''
       @item.valid?
