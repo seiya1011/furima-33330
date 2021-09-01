@@ -11,6 +11,9 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+    def index
+   @item = Item.all
+    end
   end
 
 

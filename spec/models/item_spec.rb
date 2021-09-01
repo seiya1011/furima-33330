@@ -36,6 +36,11 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include "Product name can't be blank"
     end
+    it 'priceが空だと出品できない' do
+      @item.price = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Price can't be blank"
+    end
     it 'infoが空だと出品できない' do
       @item.info = ''
       @item.valid?
