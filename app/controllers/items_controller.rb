@@ -12,9 +12,9 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-  
+
   def index
-    @item = Item.all
+    @item = Item.all.order(created_at: :desc)
      end
 
 private
