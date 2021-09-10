@@ -21,11 +21,13 @@ class ItemsController < ApplicationController
       @item =Item.find(params[:id])
      end
      
-     def destroy
-      @item = Item.find(params[:id])
-      redirect_to root_path
-    end
+     #def destroy
+      #@item = Item.find(params[:id])
+      #redirect_to root_path
+    #end
   
+    def edit
+    end
 
 
 private
