@@ -20,8 +20,14 @@ class ItemsController < ApplicationController
      def show
       @item =Item.find(params[:id])
      end
-
      
+     def destroy
+      @item = Item.find(params[:id])
+      redirect_to root_path
+    end
+  
+
+
 private
 
   def items_params
