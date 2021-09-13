@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new,:create,:edit,:update,:destroy]
-  before_action :baria_user, only: [ :destroy,]
+  before_action :baria_user, only: [ :destroy,:edit]
+  before_action :set_message, only: [ :show,:destroy,:edit,:update]
   def new
     @item = Item.new
   end
@@ -19,22 +20,17 @@ class ItemsController < ApplicationController
      end
 
      def show
-      @item =Item.find(params[:id])
      end
      
      def destroy
-      @item = Item.find(params[:id])
       @item.destroy
       redirect_to root_path
     end
   
     def edit
-      @item =Item.find(params[:id])
-      redirect_to root_path unless current_user.id == @item.user_id
     end
 
     def update
-      @item =Item.find(params[:id])
       if  @item.update(items_params)
         redirect_to action: :show
     else
@@ -55,4 +51,7 @@ private
         redirect_to root_path(current_user)
     end
   end 
+  def set_message
+    @item = Item.find(params[:id])
+  end
 end
