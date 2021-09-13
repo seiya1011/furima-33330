@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new,:create,:edit,:update,:destroy]
+  before_action :baria_user, only: [ :destroy,]
   def new
     @item = Item.new
   end
@@ -49,4 +50,9 @@ private
     params.require(:item).permit(:product_name, :image,:info,:category_id,:product_condition_id,:shipping_charge_id,:prefecture_id,:day_to_ship_id,:price).merge(user_id: current_user.id)
   end
 
+  def baria_user
+    unless Item.find(params[:id]).user.id.to_i == current_user.id
+        redirect_to root_path(current_user)
+    end
+  end 
 end
