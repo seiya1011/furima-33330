@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new,:create,:edit,:update]
+  before_action :authenticate_user!, only: [:new,:create,:edit,:update,:destroy]
+  before_action :baria_user, only: [ :destroy,:edit]
+  before_action :set_message, only: [ :show,:destroy,:edit,:update]
   def new
     @item = Item.new
   end
@@ -18,21 +20,17 @@ class ItemsController < ApplicationController
      end
 
      def show
-      @item =Item.find(params[:id])
      end
      
-     #def destroy
-      #@item = Item.find(params[:id])
-      #redirect_to root_path
-    #end
+     def destroy
+      @item.destroy
+      redirect_to root_path
+    end
   
     def edit
-      @item =Item.find(params[:id])
-      redirect_to root_path unless current_user.id == @item.user_id
     end
 
     def update
-      @item =Item.find(params[:id])
       if  @item.update(items_params)
         redirect_to action: :show
     else
@@ -40,12 +38,20 @@ class ItemsController < ApplicationController
     end
   end
 
+
+
 private
 
   def items_params
     params.require(:item).permit(:product_name, :image,:info,:category_id,:product_condition_id,:shipping_charge_id,:prefecture_id,:day_to_ship_id,:price).merge(user_id: current_user.id)
   end
 
-
-
+  def baria_user
+    unless Item.find(params[:id]).user.id.to_i == current_user.id
+        redirect_to root_path(current_user)
+    end
+  end 
+  def set_message
+    @item = Item.find(params[:id])
+  end
 end
