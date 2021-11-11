@@ -6,7 +6,13 @@ class OrdersController < ApplicationController
    end
  
    def create
-     binding.pry
-   end
+    @item = Item.find(params[:item_id])
+    @orders = Orders.new(orders_params)
+    if @orders.valid?
+      @orders.save
+      redirect_to root_path 
+    else
+      render :index
+    end
   end
-
+end
