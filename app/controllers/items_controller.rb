@@ -52,6 +52,6 @@ private
     end
   end 
   def set_message
-    @item = Item.find(params[:item_id])
+    @item = Item.find(params[:id])
   end
 end
