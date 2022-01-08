@@ -18,8 +18,8 @@ class OrdersController < ApplicationController
 
   private
 
-  def orders_params
-    params.permit(:prefecture_id,:postcode,:block,:city,:building,:phone_number)
+  def purchase_params
+    params.require(:purchase_address).permit(:post_code, :prefecture_id, :city, :home_num, :building_name, :tel).merge(user_id: current_user.id)
   end
 
 end
